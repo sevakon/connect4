@@ -22,18 +22,19 @@ def make_move(player, board):
             print(e)
 
 
-def game(n_rows, n_cols, n_players):
-    check_value(n_rows, 'Number of rows')
-    check_value(n_cols, 'Number of columns')
-    check_value(n_players, 'Number of players')
+def game(args):
+    for key, value in args.items():
+        check_value(value, 'Number of ' + key)
 
-    print('Initializing game with params: \n' +\
-    'n_rows: {}\nn_cols: {}\nn_players {}'.format(n_rows, n_cols, n_players))
+    print('Initializing game with params: \n' +
+    'rows: {}\ncols: {}\nplayers: {}\nwinning pieces: {}'.format(
+        args['rows'], args['cols'], args['players'], args['pieces']))
+        
     players = []
-    for player_idx in range(n_players):
+    for player_idx in range(args['players']):
         players.append(Player(player_idx + 1))
 
-    board = Board(n_rows, n_cols)
+    board = Board(args['rows'], args['cols'], args['pieces'])
     game_on = True
 
     while game_on:
@@ -60,10 +61,18 @@ if __name__=='__main__':
                         help="specify number of columns")
     parser.add_argument("-players", type=int, default=2,
                         help="specify number of players")
+    parser.add_argument("-pieces", type=int, default=4,
+                        help="specify number of winning pieces")
 
     args = parser.parse_args()
+    game_args = {
+        'rows': args.rows,
+        'cols': args.cols,
+        'players': args.players,
+        'pieces': args.pieces
+    }
     try:
-        game(args.rows, args.cols, args.players)
+        game(game_args)
     except Exception as e:
         print(str(e) + '\nTerminating..')
         sys.exit()
