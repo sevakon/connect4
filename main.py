@@ -6,7 +6,7 @@ from player import Player
 
 def check_value(variable, variable_name):
     if variable < 0:
-        raise Exception("{} cannnot be negative".format(variable_name))
+        raise Exception("{} cannot be negative".format(variable_name))
 
 
 def make_move(player, board):
@@ -27,9 +27,9 @@ def game(args):
         check_value(value, 'Number of ' + key)
 
     print('Initializing game with params: \n' +
-    'rows: {}\ncols: {}\nplayers: {}\nwinning pieces: {}'.format(
-        args['rows'], args['cols'], args['players'], args['pieces']))
-        
+          'rows: {}\ncols: {}\nplayers: {}\nwinning pieces: {}'.format(
+              args['rows'], args['cols'], args['players'], args['pieces']))
+
     players = []
     for player_idx in range(args['players']):
         players.append(Player(player_idx + 1))
@@ -52,9 +52,8 @@ def game(args):
                 break
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-
     parser.add_argument("-rows", type=int, default=6,
                         help="specify number of rows")
     parser.add_argument("-cols", type=int, default=7,
