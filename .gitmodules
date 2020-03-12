@@ -1,3 +1,6 @@
 [submodule "resnet50-tensorflow"]
 	path = resnet50-tensorflow
 	url = https://github.com/sevakon/resnet50-tensorflow.git
+[submodule "mobilenetv2"]
+	path = mobilenetv2
+	url = https://github.com/sevakon/mobilenetv2
