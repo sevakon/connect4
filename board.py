@@ -110,6 +110,14 @@ class Board:
                     self.board[idx - 2, col_idx] = int(char)
                     col_idx += 1
     
+    def write_board_to_file(self, filename):
+        """
+        Save current board state to file
+        :param filename: where to write
+        :return: None
+        """
+        f = open(filename, "w")
+        f.write(self.__str__())
         f.close()
 
     def __str__(self):
