@@ -93,6 +93,16 @@ class Board:
                     return True
         return False
 
+    def write_board_to_file(self, filename):
+        """
+        Save current board state to file
+        :param filename: where to write
+        :return: None
+        """
+        f = open(filename, "w")
+        f.write(self.__str__())
+        f.close()
+
     def __str__(self):
         """
         String representation
