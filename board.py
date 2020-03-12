@@ -93,6 +93,25 @@ class Board:
                     return True
         return False
 
+    def load_board_from_file(self, filename):
+        """
+        Loads game status from file
+        :param filename: file from where to load
+        :return: None
+        """
+        f = open(filename, "r")
+        for idx, line in enumerate(f):
+            if idx == 1 or idx == 0:
+                continue
+
+            col_idx = 0
+            for char in line:
+                if char.isdigit():
+                    self.board[idx - 2, col_idx] = int(char)
+                    col_idx += 1
+    
+        f.close()
+
     def __str__(self):
         """
         String representation
